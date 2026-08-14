@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { deleteDocument, listDocuments, renameDocument, retryDocument } from "../api/documents";
 
 const STATUS_LABELS = {
@@ -116,6 +117,11 @@ export default function DocumentList({ refreshToken }) {
             <td>{doc.page_count ?? "-"}</td>
             <td>{new Date(doc.created_at).toLocaleString()}</td>
             <td className="document-actions">
+              {doc.status === "READY" && (
+                <Link to={`/chat?doc=${doc.id}`}>
+                  <button type="button">Discuter</button>
+                </Link>
+              )}
               <button onClick={() => startRename(doc)}>Renommer</button>
               {doc.status === "FAILED" && (
                 <button onClick={() => handleRetry(doc.id)}>Relancer</button>

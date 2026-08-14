@@ -35,6 +35,20 @@ def generate_upload_url(key, content_type, expires_in=600):
     )
 
 
+def generate_download_url(key, filename, expires_in=600):
+    client = get_s3_client()
+    return client.generate_presigned_url(
+        "get_object",
+        Params={
+            "Bucket": settings.MINIO_BUCKET,
+            "Key": key,
+            "ResponseContentDisposition": f'inline; filename="{filename}"',
+            "ResponseContentType": "application/pdf",
+        },
+        ExpiresIn=expires_in,
+    )
+
+
 def head_object(key):
     client = get_s3_client()
     return client.head_object(Bucket=settings.MINIO_BUCKET, Key=key)

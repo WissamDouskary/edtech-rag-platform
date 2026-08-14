@@ -12,7 +12,7 @@ from .models import Document
 from .serializers import ConfirmUploadSerializer, DocumentSerializer, UploadURLRequestSerializer
 from .services.ingestion import delete_document_fully, ingest_document
 from .services.quota import QuotaExceededError, check_quota
-from .services.storage import delete_object, generate_upload_url, head_object
+from .services.storage import delete_object, generate_download_url, generate_upload_url, head_object
 
 
 class DocumentUploadURLView(APIView):
@@ -136,3 +136,17 @@ class DocumentRetryView(APIView):
         ingest_document(document)
         document.refresh_from_db()
         return Response(DocumentSerializer(document).data)
+
+
+class DocumentDownloadURLView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        document = get_object_or_404(Document, pk=pk, owner=request.user)
+        if document.status != Document.Status.READY:
+            return Response(
+                {"detail": "Seuls les documents prêts peuvent être consultés."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        url = generate_download_url(document.storage_key, document.filename)
+        return Response({"url": url, "expires_in": 600})

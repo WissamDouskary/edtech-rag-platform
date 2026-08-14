@@ -48,6 +48,11 @@ export async function retryDocument(id) {
   return data;
 }
 
+export async function getDocumentDownloadUrl(id) {
+  const { data } = await apiClient.get(`/documents/${id}/download-url/`);
+  return data;
+}
+
 export async function uploadDocument(file, onProgress) {
   const { upload_url: uploadUrl, storage_key: storageKey, content_type: contentType } =
     await requestUploadUrl({

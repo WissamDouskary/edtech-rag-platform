@@ -186,3 +186,252 @@ body {
   font-size: 0.75rem;
   color: #b3261e;
 }
+
+/* --- Chat --- */
+
+.chat-layout {
+  display: flex;
+  height: calc(100vh - 57px);
+}
+
+.chat-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid #e5e6ee;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.new-conversation-btn {
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.conversation-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.conversation-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.conversation-list li button:first-child {
+  flex: 1;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #e5e6ee;
+  border-radius: 8px;
+  background: #fafafe;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow: hidden;
+}
+
+.conversation-list li.active button:first-child {
+  border-color: #4f46e5;
+  background: #f2f1fd;
+}
+
+.conv-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conv-scope {
+  font-size: 0.7rem;
+  color: #6b6d80;
+}
+
+.conv-delete {
+  border: none;
+  background: transparent;
+  color: #b3261e;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.new-conversation-form {
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.new-conversation-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.new-conversation-form select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #d7d9e0;
+}
+
+.chat-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.chat-bubble {
+  max-width: 72%;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.chat-bubble-content {
+  white-space: pre-wrap;
+}
+
+.chat-user {
+  align-self: flex-end;
+  background: #4f46e5;
+  color: white;
+}
+
+.chat-assistant {
+  align-self: flex-start;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.citation-chip {
+  display: inline-block;
+  border: none;
+  background: #e8edff;
+  color: #3b4bcc;
+  border-radius: 6px;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 0.1rem;
+}
+
+.citation-list {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.citation-item .citation-chip {
+  display: block;
+  text-align: left;
+  width: fit-content;
+}
+
+.citation-excerpt {
+  margin-top: 0.3rem;
+  padding: 0.6rem 0.75rem;
+  background: #f7f7fb;
+  border-left: 3px solid #4f46e5;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.citation-excerpt p {
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+  color: #444;
+}
+
+.citation-excerpt button {
+  border: 1px solid #d7d9e0;
+  background: #fff;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+
+.follow-up-actions {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.follow-up-actions button {
+  border: 1px solid #d7d9e0;
+  background: #fafafe;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.chat-input-row input {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #d7d9e0;
+  font-size: 0.92rem;
+}
+
+.chat-input-row button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-input-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

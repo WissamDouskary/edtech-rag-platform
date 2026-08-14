@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import DocumentList from "./DocumentList.jsx";
 import DocumentUpload from "./DocumentUpload.jsx";
@@ -12,6 +13,9 @@ export default function DashboardPage() {
       <div className="topbar">
         <strong>EdTech RAG Platform</strong>
         <div>
+          <Link to="/chat" style={{ marginRight: "1rem" }}>
+            Discuter avec mes documents
+          </Link>
           <span style={{ marginRight: "1rem" }}>
             {user?.email} ({user?.role})
           </span>

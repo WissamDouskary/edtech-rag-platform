@@ -133,3 +133,15 @@ MINIO_USE_SSL = os.environ.get("MINIO_USE_SSL", "False") == "True"
 
 # --- Vector store (Chroma) — persisted on local disk ---
 CHROMA_PERSIST_DIR = os.environ.get("CHROMA_PERSIST_DIR", str(BASE_DIR / "chroma_data"))
+
+# --- LLM (Gemini, free tier) — used by the multi-agent RAG chat ---
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_ORCHESTRATOR_MODEL = os.environ.get("GEMINI_ORCHESTRATOR_MODEL", "gemini-flash-lite-latest")
+# The heavier "gemini-flash-latest" tier returned frequent 503 "high demand" errors
+# during testing; the lite tier streams fast and reliably, so it's the default for
+# both agents. Bump GEMINI_PEDAGOGICAL_MODEL back to "gemini-flash-latest" in .env
+# if you want the beefier model and can tolerate occasional retries.
+GEMINI_PEDAGOGICAL_MODEL = os.environ.get("GEMINI_PEDAGOGICAL_MODEL", "gemini-flash-lite-latest")
+
+# Top-k chunks retrieved by the RAG agent per question
+RAG_TOP_K = int(os.environ.get("RAG_TOP_K", "5"))

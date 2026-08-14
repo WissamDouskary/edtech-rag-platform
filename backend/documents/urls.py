@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     DocumentConfirmView,
     DocumentDetailView,
+    DocumentDownloadURLView,
     DocumentListView,
     DocumentRetryView,
     DocumentUploadURLView,
@@ -14,4 +15,5 @@ urlpatterns = [
     path("", DocumentListView.as_view(), name="document-list"),
     path("<int:pk>/", DocumentDetailView.as_view(), name="document-detail"),
     path("<int:pk>/retry/", DocumentRetryView.as_view(), name="document-retry"),
+    path("<int:pk>/download-url/", DocumentDownloadURLView.as_view(), name="document-download-url"),
 ]
