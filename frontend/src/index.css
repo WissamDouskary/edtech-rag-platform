@@ -100,3 +100,89 @@ body {
 .dashboard {
   padding: 2rem;
 }
+
+.upload-dropzone {
+  border: 2px dashed #c7c9d9;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: #55576b;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.upload-dropzone.dragging {
+  border-color: #4f46e5;
+  background: #f2f1fd;
+}
+
+.document-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.document-table th,
+.document-table td {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #eceef4;
+  font-size: 0.9rem;
+}
+
+.document-table th {
+  background: #f7f7fb;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b6d80;
+}
+
+.document-actions button {
+  margin-right: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #d7d9e0;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-uploaded {
+  background: #e8edff;
+  color: #3b4bcc;
+}
+
+.status-processing {
+  background: #fff4d9;
+  color: #9a6b00;
+}
+
+.status-ready {
+  background: #e2f7e7;
+  color: #1f8a3d;
+}
+
+.status-failed {
+  background: #fdecec;
+  color: #b3261e;
+}
+
+.failure-reason {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #b3261e;
+}

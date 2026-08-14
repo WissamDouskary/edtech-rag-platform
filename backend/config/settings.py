@@ -130,3 +130,6 @@ MINIO_ACCESS_KEY = os.environ.get("MINIO_ACCESS_KEY", "minioadmin")
 MINIO_SECRET_KEY = os.environ.get("MINIO_SECRET_KEY", "minioadmin")
 MINIO_BUCKET = os.environ.get("MINIO_BUCKET", "edtech-documents")
 MINIO_USE_SSL = os.environ.get("MINIO_USE_SSL", "False") == "True"
+
+# --- Vector store (Chroma) — persisted on local disk ---
+CHROMA_PERSIST_DIR = os.environ.get("CHROMA_PERSIST_DIR", str(BASE_DIR / "chroma_data"))

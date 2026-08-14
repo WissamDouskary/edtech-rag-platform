@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
+import DocumentList from "./DocumentList.jsx";
+import DocumentUpload from "./DocumentUpload.jsx";
 
 export default function DashboardPage() {
   const { user, logout } = useAuth();
+  const [refreshToken, setRefreshToken] = useState(0);
 
   return (
     <div className="app-shell">
@@ -15,8 +19,11 @@ export default function DashboardPage() {
         </div>
       </div>
       <div className="dashboard">
-        <h2>Welcome, {user?.first_name || user?.email}</h2>
-        <p>Your workspace is empty. Document upload and RAG chat land in the next phase.</p>
+        <h2>Mes documents</h2>
+        <DocumentUpload onUploaded={() => setRefreshToken((t) => t + 1)} />
+        <div style={{ marginTop: "1.5rem" }}>
+          <DocumentList refreshToken={refreshToken} />
+        </div>
       </div>
     </div>
   );
