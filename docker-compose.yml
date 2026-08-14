@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: edtech_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-edtech}
+      POSTGRES_USER: ${POSTGRES_USER:-edtech}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-edtech_dev_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-edtech} -d ${POSTGRES_DB:-edtech}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+# MinIO is NOT managed here — it runs as a native Windows binary on this machine
+# (see README.md: `minio.exe server C:\minio-data --console-address ":9001"`).
+
+volumes:
+  postgres_data:
